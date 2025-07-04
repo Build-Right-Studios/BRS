@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import logo from '../assets/images/logo.png';
+
 
 export default function ComingSoon() {
   const containerRef = useRef(null);
@@ -81,7 +83,7 @@ export default function ComingSoon() {
           <div className="w-15 h-15 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold shadow-lg">
             <img
               className="w-13 h-13 rounded-full"
-              src="./src/assets/images/logo.png"
+              src={logo}
               alt="Logo"
             />
           </div>
