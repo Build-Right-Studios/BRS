@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import './App.css'
+import ComingSoon from './Components/landing.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className='text-red-500'>Hello</div>
+
+      <ComingSoon />
     </>
   )
 }
