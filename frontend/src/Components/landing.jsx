@@ -34,66 +34,70 @@ export default function ComingSoon() {
       ref={containerRef}
       className="relative w-full h-screen overflow-hidden bg-[#0d0d1f] text-white"
     >
-      {/* 🪐 Particle Background */}
-      <div className="fixed top-0 left-0 w-full h-full z-0">
-        <Particles 
-          id="tsparticles"
-          init={particlesInit}
-          options={{
-            fullScreen: { enable: false },
-            background: { color: "#0d0d1f" },
-            fpsLimit: 60,
-            particles: {
-              number: { value: 100, density: { enable: true, area: 800 } },
-              color: { value: "#ffffff" },
-              shape: { type: "circle" },
-              opacity: {
-                value: 0.3,
-                random: true,
-                anim: {
-                  enable: true,
-                  speed: 1,
-                  opacity_min: 0.1,
-                  sync: false,
-                },
-              },
-              size: { value: 2, random: true },
-              move: {
+      {/* 🌌 Fullscreen Particle Background */}
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        options={{
+          fullScreen: { enable: true, zIndex: 0 },
+          background: { color: "#0d0d1f" },
+          fpsLimit: 60,
+          particles: {
+            number: { value: 100, density: { enable: true, area: 800 } },
+            color: { value: "#ffffff" },
+            shape: { type: "circle" },
+            opacity: {
+              value: 0.3,
+              random: true,
+              anim: {
                 enable: true,
-                speed: 0.3,
-                direction: "none",
-                outModes: { default: "out" },
+                speed: 1,
+                opacity_min: 0.1,
+                sync: false,
               },
             },
-            interactivity: {
-              events: {
-                onHover: { enable: true, mode: "repulse" },
-                resize: true,
-              },
-              modes: { repulse: { distance: 80, duration: 0.4 } },
+            size: { value: 2, random: true },
+            move: {
+              enable: true,
+              speed: 0.3,
+              direction: "none",
+              outModes: { default: "out" },
             },
-            detectRetina: true,
-          }}
-        />
-      </div>
+          },
+          interactivity: {
+            events: {
+              onHover: { enable: true, mode: "repulse" },
+              resize: true,
+            },
+            modes: { repulse: { distance: 80, duration: 0.4 } },
+          },
+          detectRetina: true,
+        }}
+      />
 
       {/* 🌐 Navbar */}
       <header className="absolute top-0 left-0 w-full px-8 py-6 flex items-center justify-between z-10">
         <div className="flex items-center gap-3">
           <div className="w-15 h-15 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold shadow-lg">
-            <img className="w-13 h-13 rounded-full" src=".\src\assets\images\logo.png" alt="Logo" />
+            <img
+              className="w-13 h-13 rounded-full"
+              src="./src/assets/images/logo.png"
+              alt="Logo"
+            />
           </div>
           <div>
             <h1 className="text-xl font-semibold tracking-wide">
               Build Right Studios
               <br />
-              <span className="text-sm text-gray-400 -mt-1">&lt;Build Right Every Time /&gt;</span>
+              <span className="text-sm text-gray-400 -mt-1">
+                &lt;Build Right Every Time /&gt;
+              </span>
             </h1>
           </div>
         </div>
       </header>
 
-      {/* 🌑 Coming Soon Content */}
+      {/* 🚀 Coming Soon Main Section */}
       <div className="flex items-center justify-center h-full z-10 relative">
         <motion.div
           className="text-center space-y-10"
@@ -113,7 +117,11 @@ export default function ComingSoon() {
             <motion.div
               className="w-96 h-96 bg-[#0d0d1f] rounded-full relative z-10 border border-[#1e1e2f] flex items-center justify-center"
               initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1, transition: { duration: 1.2 } }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                transition: { duration: 1.2 },
+              }}
               style={{
                 transform: `translate(${offsetX}px, ${offsetY}px)`,
               }}
@@ -121,7 +129,11 @@ export default function ComingSoon() {
               <motion.h1
                 className="text-xl lg:text-4xl tracking-[0.4em] text-white font-light z-20 whitespace-nowrap"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: 0.6, duration: 1 } }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { delay: 0.6, duration: 1 },
+                }}
                 whileHover={{ scale: 1.02 }}
               >
                 C O M I N G   S O O N
@@ -129,7 +141,7 @@ export default function ComingSoon() {
             </motion.div>
           </div>
 
-          {/* 📧 Email Notify */}
+          {/* 📧 Email Notification */}
           <motion.div
             className="space-y-4"
             initial={{ opacity: 0, y: 20 }}
