@@ -40,7 +40,7 @@ export default function App() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <img
-              src="https://placehold.co/50x50/e6a17a/583d2b?text=BRS"
+              src=""
               alt="Build Right Studios Logo"
               className="h-10 rounded-md"
             />
