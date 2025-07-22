@@ -8,9 +8,9 @@ function App() {
 
   return (
     <>
-      {/* <Nav /> */}
-      {/* <LandingPage /> */}
        <ComingSoon /> 
+         <Nav /> 
+       <LandingPage /> 
     </>
   )
 }
