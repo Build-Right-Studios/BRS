@@ -1,147 +1,139 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
+// Animation Variants
+const navItemVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.15, duration: 0.5 },
+  }),
+};
+
+const pageTextVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 1.2 } },
+};
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const navBarVariants = {
-    hidden: { y: -100, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
-  const menuItemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-    hover: { scale: 1.05, color: "#e6a17a", transition: { duration: 0.2 } },
-    tap: { scale: 0.95 },
-  };
-
-  const hamburgerIconVariants = {
-    closed: { rotate: 0 },
-    open: { rotate: 90 },
-  };
+  const navItems = ['Home', 'Services', 'Portfolio', 'About', 'Contact'];
 
   return (
-    <div className="bg-[#eee3cb] font-sans min-h-screen">
+    <div className="bg-[#eee3cb] min-h-screen font-sans">
       {/* Navbar */}
       <motion.nav
-        className="w-full bg-[#eee3cb] bg-opacity-90 backdrop-blur-md shadow-2xl flex flex-col md:flex-row items-center justify-between p-4 sm:p-6 space-y-4 md:space-y-0 border-b border-[#583d2b]/30"
-        initial="hidden"
-        animate="visible"
-        variants={navBarVariants}
+        className="w-full fixed top-0 left-0 z-50 bg-[#eee3cb] bg-opacity-90 backdrop-blur-md shadow-md border-b border-[#583d2b]/20"
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        {/* Logo and toggle */}
-        <div className="flex items-center w-full md:w-auto">
-          <motion.a
-            href="#"
-            className="flex items-center space-x-3 text-[#583d2b] text-2xl sm:text-3xl font-extrabold tracking-tight group outline-none border-none"
-            style={{ border: "none", outline: "none" }}
-            whileHover={{ scale: 1.02, color: "#e6a17a" }}
-            whileTap={{ scale: 0.98 }}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          {/* Logo + Brand Name */}
+          <motion.div
+            className="flex items-center space-x-3"
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             <img
-              src=".\src\assets\images\logo.png"
+              src="https://placehold.co/50x50/e6a17a/583d2b?text=BRS"
               alt="Build Right Studios Logo"
-              className="h-10 sm:h-12 rounded-md"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = "https://placehold.co/50x50/E0E0E0/333333?text=Error";
-              }}
+              className="h-10 rounded-md"
             />
-            <span className="inline whitespace-nowrap">Build Right Studios</span>
-          </motion.a>
+            <span className="text-[#583d2b] font-extrabold text-xl whitespace-nowrap">
+              Build Right Studios
+            </span>
+          </motion.div>
 
-          {/* Hamburger */}
-          <motion.button
-            onClick={toggleMenu}
-            className="md:hidden p-2 text-[#583d2b] hover:text-[#e6a17a] focus:outline-none focus:ring-2 focus:ring-[#e6a17a] rounded-md transition-colors duration-200 ml-auto"
-            aria-label="Toggle menu"
-            initial={false}
-            animate={isMenuOpen ? "open" : "closed"}
-            variants={hamburgerIconVariants}
-          >
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              )}
-            </svg>
-          </motion.button>
-        </div>
-
-        {/* Menu Items */}
-        <motion.div
-          className={`w-full md:flex md:flex-grow md:justify-center ${
-            isMenuOpen ? 'block' : 'hidden'
-          } flex-col items-center space-y-4 md:space-y-0 mt-4 md:mt-0`}
-          variants={isMenuOpen ? {
-            visible: {
-              transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.2,
-              }
-            }
-          } : {}}
-        >
-          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-lg font-medium text-[#583d2b]">
-            {['Home', 'Services', 'Portfolio', 'About', 'Contact'].map((item) => (
+          {/* Desktop Nav Items */}
+          <div className="hidden md:flex items-center space-x-8 text-[#583d2b] font-medium">
+            {navItems.map((item, i) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="hover:text-[#e6a17a] transition duration-300 ease-in-out py-1 px-2 rounded-md"
-                onClick={() => setIsMenuOpen(false)}
-                variants={menuItemVariants}
-                whileHover="hover"
-                whileTap="tap"
+                className="hover:text-[#e6a17a] transition duration-300"
+                custom={i}
+                variants={navItemVariants}
+                initial="hidden"
+                animate="visible"
               >
                 {item}
               </motion.a>
             ))}
           </div>
-        </motion.div>
 
-        {/* CTA Button */}
-        <motion.div
-          className={`md:flex ${isMenuOpen ? 'block' : 'hidden'} mt-4 md:mt-0`}
-          variants={isMenuOpen ? {
-            visible: {
-              transition: {
-                delayChildren: 0.4,
-              }
-            }
-          } : {}}
-        >
-          <motion.button
-            className="relative overflow-hidden bg-[#e6a17a] text-white px-8 py-3 rounded-full font-semibold shadow-lg transform transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#e6a17a] focus:ring-opacity-75 group skew-x-6"
-            whileHover={{ scale: 1.05, boxShadow: "0 8px 15px rgba(230, 161, 122, 0.3)" }}
-            whileTap={{ scale: 0.95 }}
+          {/* Desktop Button */}
+          <motion.div
+            className="hidden md:block"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.4 }}
           >
-            <span className="relative z-10 -skew-x-6 inline-block">Get a Quote</span>
-            <motion.span
-              className="absolute inset-0 bg-gradient-to-r from-[#d98c63] to-[#e6a17a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              initial={{ x: "-100%" }}
-              animate={{ x: "0%" }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            ></motion.span>
-          </motion.button>
-        </motion.div>
+            <button className="bg-[#e6a17a] text-white px-6 py-2 rounded-full font-semibold shadow-md hover:shadow-xl transition-all">
+              Get a Quote
+            </button>
+          </motion.div>
+
+          {/* Hamburger for Mobile */}
+          <div className="md:hidden">
+            <button onClick={toggleMenu} className="text-[#583d2b] focus:outline-none">
+              {isMenuOpen ? (
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMenuOpen && (
+          <motion.div
+            className="md:hidden bg-[#eee3cb] border-t border-[#583d2b]/20 px-4 pb-4"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="flex flex-col space-y-3 pt-3 text-[#583d2b] font-medium">
+              {navItems.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="hover:text-[#e6a17a] transition"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </a>
+              ))}
+              <motion.button
+                className="bg-[#e6a17a] text-white px-5 py-2 mt-2 rounded-full font-semibold"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get a Quote
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
       </motion.nav>
 
-      {/* ✅ Replaced the old placeholder with cleaner spacing */}
-      <div className="text-center text-[#583d2b]/60 py-12">
+      {/* Main Page Content */}
+      <motion.div
+        className="pt-24 text-center text-[#583d2b]/60"
+        variants={pageTextVariant}
+        initial="hidden"
+        animate="visible"
+      >
         <p className="text-xl">Welcome to Build Right Studios!</p>
-      </div>
+      </motion.div>
     </div>
   );
 }
