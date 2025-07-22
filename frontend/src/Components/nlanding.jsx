@@ -52,7 +52,7 @@ export default function LandingPage() {
           variants={sectionVariants}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-[#583d2b]">
-            We Build <span className="text-[#e6a17a]">Right</span><br /> for Your Digital Vision
+            Build <span className="text-[#e6a17a]">Right</span><br /> Every Time
           </h1>
           <p className="text-lg sm:text-xl text-[#583d2b]/80 mb-8">
             Creative solutions, impactful designs, and pixel-perfect development tailored to boost your digital presence and achieve your goals.
