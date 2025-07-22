@@ -40,7 +40,7 @@ export default function App() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <img
-              src=""
+              src=".\src\assets\images\logo.png"
               alt="Build Right Studios Logo"
               className="h-10 rounded-md"
             />
