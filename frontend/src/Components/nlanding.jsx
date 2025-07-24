@@ -72,19 +72,72 @@ export default function LandingPage() {
           </motion.button>
         </motion.div>
 
-        {/* Right Image/Illustration */}
+        {/* Right Image/Illustration - Now a real-time live graphic of a planet with a revolving ring */}
         <motion.div
-          className="mb-10 md:mb-0 flex-1 flex justify-center items-center"
-          initial={{ opacity: 0, scale: 0.7, rotate: -10 }} // Added rotation and smaller initial scale
+          className="mb-10 md:mb-0 flex-1 flex justify-center items-center p-4"
+          initial={{ opacity: 0, scale: 0.7, rotate: -10 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }} // Longer duration
-          whileHover={{ scale: 1.03, rotate: 2, boxShadow: "0 20px 40px rgba(90, 61, 43, 0.3)" }} // Subtle hover effect
+          transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+          whileHover={{ scale: 1.03, rotate: 2, boxShadow: "0 20px 40px rgba(90, 61, 43, 0.3)" }}
         >
-          <img
-            src="https://placehold.co/550x450/e6a17a/583d2b?text=Creative+Studio+Art" // Updated placeholder color
-            alt="Hero Illustration"
-            className="w-full max-w-lg mx-auto rounded-xl shadow-2xl border border-[#583d2b]/30"
-          />
+          <motion.svg
+            className="w-full max-w-lg h-auto mx-auto drop-shadow-2xl"
+            viewBox="0 0 600 400"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Planet */}
+            <motion.circle
+              cx="300" cy="200" r="100"
+              fill="url(#planetGradient)"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 1, ease: "easeOut" }}
+              whileHover={{ scale: 1.05 }}
+            />
+
+            {/* Ring - will animate to revolve around the planet */}
+            <motion.ellipse
+              cx="300" cy="200" rx="180" ry="60"
+              fill="none"
+              stroke="#e6a17a"
+              strokeWidth="10"
+              initial={{ rotate: 0, scaleY: 0.5, opacity: 0 }}
+              animate={{
+                rotate: 360, // Full revolution
+                scaleY: [0.5, 0.6, 0.5, 0.4, 0.5], // Simulate perspective change
+                opacity: [0, 1, 1, 0.5, 1] // Fade out slightly when behind
+              }}
+              transition={{
+                rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                scaleY: { duration: 7.5, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" },
+                opacity: { duration: 7.5, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }
+              }}
+              style={{ transformOrigin: 'center center' }} // Ensure rotation is around its center
+            />
+
+            {/* Subtle stars/dots around the planet */}
+            {[...Array(15)].map((_, i) => (
+              <motion.circle
+                key={i}
+                cx={Math.random() * 600}
+                cy={Math.random() * 400}
+                r={Math.random() * 1 + 0.5}
+                fill="#583d2b"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.8, 0] }}
+                transition={{ duration: Math.random() * 5 + 3, repeat: Infinity, delay: Math.random() * 5, repeatType: "reverse" }}
+              />
+            ))}
+
+            {/* Gradients definitions */}
+            <defs>
+              <radialGradient id="planetGradient" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="0.5">
+                <stop offset="0%" stopColor="#e6a17a" />
+                <stop offset="100%" stopColor="#583d2b" />
+              </radialGradient>
+            </defs>
+          </motion.svg>
         </motion.div>
       </section>
 
