@@ -10,9 +10,6 @@ function App() {
   return (
     <>
        <ComingSoon /> 
-      <Nav /> 
-      <LandingPage />
-      <Footer />
       {/* <Nav /> */}
       {/* <LandingPage /> */}     
       {/* <Footer /> */}
