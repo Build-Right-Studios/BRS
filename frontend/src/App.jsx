@@ -14,8 +14,7 @@ function App() {
       <LandingPage />
       <Footer />
       {/* <Nav /> */}
-      {/* <LandingPage /> */}
-      
+      {/* <LandingPage /> */}     
       {/* <Footer /> */}
     </>
   )
