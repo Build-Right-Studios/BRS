@@ -4,20 +4,20 @@ import { motion } from "framer-motion";
 export default function LandingPage() {
   // Variants for section entrance animations
   const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+    hidden: { opacity: 0, y: 80, scale: 0.95 }, // More pronounced initial state
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1, ease: "easeOut" } }, // Longer duration
   };
 
   // Variants for individual item animations (e.g., feature cards, project cards, testimonials)
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+    hidden: { opacity: 0, scale: 0.7, y: 30 }, // More pronounced initial state
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }, // Longer duration
   };
 
   // Variants for text within sections (e.g., headings, paragraphs)
   const textInViewVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    hidden: { opacity: 0, y: 40 }, // More pronounced initial state
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }, // Longer duration
   };
 
   return (
@@ -25,21 +25,20 @@ export default function LandingPage() {
     <div className="min-h-screen w-full font-sans bg-[#eee3cb] text-[#583d2b] overflow-hidden relative">
 
       {/* Animated Background Elements (More Prominent Gradients/Blobs) */}
-      {/* These blobs will now blend with the lighter background and have more presence */}
       <motion.div
-        className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-br from-[#e6a17a] to-[#583d2b] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"
-        animate={{ x: [0, 150, 0], y: [0, 75, 0], rotate: [0, 360, 0] }}
+        className="absolute top-[-15%] left-[-15%] w-[500px] h-[500px] bg-gradient-to-br from-[#e6a17a] to-[#583d2b] rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob"
+        animate={{ x: [0, 200, 0], y: [0, 100, 0], rotate: [0, 360, 0], scale: [1, 1.2, 1] }} // Added scale animation
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       ></motion.div>
       <motion.div
-        className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-tl from-[#583d2b] to-[#e6a17a] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"
-        animate={{ x: [0, -150, 0], y: [0, -75, 0], rotate: [0, -360, 0] }}
+        className="absolute bottom-[-15%] right-[-15%] w-[600px] h-[600px] bg-gradient-to-tl from-[#583d2b] to-[#e6a17a] rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-2000"
+        animate={{ x: [0, -200, 0], y: [0, -100, 0], rotate: [0, -360, 0], scale: [1, 1.1, 1] }} // Added scale animation
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       ></motion.div>
       <motion.div
-        className="absolute top-[20%] left-[30%] w-[300px] h-[300px] bg-gradient-to-tr from-[#e6a17a]/60 to-[#583d2b]/60 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000"
-        animate={{ x: [0, 75, 0], y: [0, -150, 0], rotate: [0, 360, 0] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute top-[15%] left-[25%] w-[450px] h-[450px] bg-gradient-to-tr from-[#e6a17a]/70 to-[#583d2b]/70 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-4000"
+        animate={{ x: [0, 100, 0], y: [0, -200, 0], rotate: [0, 360, 0], scale: [1, 1.3, 1] }} // Added scale animation
+        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
       ></motion.div>
 
       {/* Hero Section */}
@@ -52,14 +51,14 @@ export default function LandingPage() {
           variants={sectionVariants}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-[#583d2b]">
-            Build <span className="text-[#e6a17a]">Right</span><br /> Every Time
+            We Build <span className="text-[#e6a17a] drop-shadow-lg">Right</span><br /> for Your Digital Vision
           </h1>
           <p className="text-lg sm:text-xl text-[#583d2b]/80 mb-8">
             Creative solutions, impactful designs, and pixel-perfect development tailored to boost your digital presence and achieve your goals.
           </p>
           <motion.button
-            className="relative overflow-hidden bg-[#e6a17a] text-white px-8 py-4 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#e6a17a] focus:ring-opacity-75 group"
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(230, 161, 122, 0.3)" }}
+            className="relative overflow-hidden bg-[#e6a17a] text-white px-8 py-4 rounded-full font-semibold shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#e6a17a] focus:ring-opacity-75 group"
+            whileHover={{ scale: 1.05, boxShadow: "0 12px 25px rgba(230, 161, 122, 0.5)" }} // Stronger shadow
             whileTap={{ scale: 0.95 }}
           >
             <span className="relative z-10">Let’s Work Together</span>
@@ -76,9 +75,10 @@ export default function LandingPage() {
         {/* Right Image/Illustration */}
         <motion.div
           className="mb-10 md:mb-0 flex-1 flex justify-center items-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          initial={{ opacity: 0, scale: 0.7, rotate: -10 }} // Added rotation and smaller initial scale
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }} // Longer duration
+          whileHover={{ scale: 1.03, rotate: 2, boxShadow: "0 20px 40px rgba(90, 61, 43, 0.3)" }} // Subtle hover effect
         >
           <img
             src="https://placehold.co/550x450/e6a17a/583d2b?text=Creative+Studio+Art" // Updated placeholder color
@@ -98,7 +98,7 @@ export default function LandingPage() {
             viewport={{ once: true, amount: 0.5 }}
             variants={textInViewVariants}
           >
-            Why Choose <span className="text-[#e6a17a]">Build Right Studios</span>?
+            Why Choose <span className="text-[#e6a17a] drop-shadow-md">Build Right Studios</span>?
           </motion.h2>
           <motion.p
             className="text-lg sm:text-xl text-[#583d2b]/80 mb-12 max-w-3xl mx-auto"
@@ -118,9 +118,9 @@ export default function LandingPage() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: 0.4 }}
-              whileHover={{ scale: 1.05, boxShadow: "0 15px 30px rgba(90, 61, 43, 0.1)" }}
+              whileHover={{ scale: 1.07, boxShadow: "0 18px 35px rgba(90, 61, 43, 0.2)" }} // Stronger scale and shadow
             >
-              <motion.svg className="w-12 h-12 text-[#e6a17a] mb-4 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></motion.svg>
+              <motion.svg className="w-12 h-12 text-[#e6a17a] mb-4 group-hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></motion.svg>
               <h3 className="text-xl font-semibold mb-2 text-[#583d2b]">Timely Delivery</h3>
               <p className="text-[#583d2b]/80">We commit to deadlines and ensure your project is completed and submitted on time, every time.</p>
             </motion.div>
@@ -130,9 +130,9 @@ export default function LandingPage() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: 0.6 }}
-              whileHover={{ scale: 1.05, boxShadow: "0 15px 30px rgba(90, 61, 43, 0.1)" }}
+              whileHover={{ scale: 1.07, boxShadow: "0 18px 35px rgba(90, 61, 43, 0.2)" }}
             >
-              <motion.svg className="w-12 h-12 text-[#e6a17a] mb-4 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></motion.svg>
+              <motion.svg className="w-12 h-12 text-[#e6a17a] mb-4 group-hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></motion.svg>
               <h3 className="text-xl font-semibold mb-2 text-[#583d2b]">Expert Workforce</h3>
               <p className="text-[#583d2b]/80">Our team comprises skilled professionals dedicated to bringing your ideas to life with precision.</p>
             </motion.div>
@@ -142,9 +142,9 @@ export default function LandingPage() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: 0.8 }}
-              whileHover={{ scale: 1.05, boxShadow: "0 15px 30px rgba(90, 61, 43, 0.1)" }}
+              whileHover={{ scale: 1.07, boxShadow: "0 18px 35px rgba(90, 61, 43, 0.2)" }}
             >
-              <motion.svg className="w-12 h-12 text-[#e6a17a] mb-4 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.84L18.15 19H5.85L12 5.84zM11 10h2v5h-2zm0 6h2v2h-2z"/></motion.svg>
+              <motion.svg className="w-12 h-12 text-[#e6a17a] mb-4 group-hover:scale-125 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.84L18.15 19H5.85L12 5.84zM11 10h2v5h-2zm0 6h2v2h-2z"/></motion.svg>
               <h3 className="text-xl font-semibold mb-2 text-[#583d2b]">Seamless Process</h3>
               <p className="text-[#583d2b]/80">From concept to completion, we ensure a smooth and transparent project journey for you.</p>
             </motion.div>
@@ -161,14 +161,14 @@ export default function LandingPage() {
           viewport={{ once: true, amount: 0.5 }}
           variants={textInViewVariants}
         >
-          Our Core <span className="text-[#e6a17a]">Services</span>
+          Our Core <span className="text-[#e6a17a] drop-shadow-md">Services</span>
         </motion.h2>
         <motion.div
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ staggerChildren: 0.15 }}
+          transition={{ staggerChildren: 0.18 }} // Slightly increased stagger
         >
           {[
             {
@@ -221,10 +221,10 @@ export default function LandingPage() {
               key={index}
               className="bg-[#eee3cb]/90 p-8 rounded-xl shadow-xl border border-[#583d2b]/30 flex flex-col items-center text-center hover:shadow-2xl transition duration-300 group"
               variants={itemVariants}
-              whileHover={{ y: -5, boxShadow: "0 15px 30px rgba(90, 61, 43, 0.1)" }} // Adjusted shadow color
+              whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(90, 61, 43, 0.2)" }} // More pronounced lift and shadow
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.15 }} // Slightly increased stagger
             >
               {item.icon}
               <h3 className="text-2xl font-semibold mb-3 text-[#583d2b]">{item.title}</h3>
@@ -243,14 +243,14 @@ export default function LandingPage() {
           viewport={{ once: true, amount: 0.5 }}
           variants={textInViewVariants}
         >
-          Our Recent <span className="text-[#e6a17a]">Work</span>
+          Our Recent <span className="text-[#e6a17a] drop-shadow-md">Work</span>
         </motion.h2>
         <motion.div
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ staggerChildren: 0.15 }}
+          transition={{ staggerChildren: 0.18 }} // Slightly increased stagger
         >
           {[
             {
@@ -286,11 +286,12 @@ export default function LandingPage() {
           ].map((project, index) => (
             <motion.div
               key={index}
-              className="bg-[#eee3cb]/90 rounded-xl shadow-xl border border-[#583d2b]/30 overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group"
+              className="bg-[#eee3cb]/90 rounded-xl shadow-xl border border-[#583d2b]/30 overflow-hidden hover:shadow-2xl transition duration-300 transform group"
               variants={itemVariants}
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.15 }} // Slightly increased stagger
+              whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(90, 61, 43, 0.2)" }} // More pronounced lift and shadow
             >
               <img src={project.image} alt={project.title} className="w-full h-48 object-cover"/>
               <div className="p-6">
@@ -298,7 +299,7 @@ export default function LandingPage() {
                 <p className="text-[#583d2b]/80 text-sm">{project.desc}</p>
                 <motion.button
                   className="mt-4 text-[#e6a17a] hover:text-[#d98c63] font-medium transition-colors duration-200"
-                  whileHover={{ x: 5 }} // Slight move right on hover
+                  whileHover={{ x: 8 }} // More pronounced slide right on hover
                 >
                   View Project &rarr;
                 </motion.button>
@@ -317,14 +318,14 @@ export default function LandingPage() {
           viewport={{ once: true, amount: 0.5 }}
           variants={textInViewVariants}
         >
-          What Our <span className="text-[#e6a17a]">Clients Say</span>
+          What Our <span className="text-[#e6a17a] drop-shadow-md">Clients Say</span>
         </motion.h2>
         <motion.div
           className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ staggerChildren: 0.2 }}
+          transition={{ staggerChildren: 0.25 }} // Increased stagger
         >
           {[
             {
@@ -349,8 +350,8 @@ export default function LandingPage() {
               variants={itemVariants}
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, boxShadow: "0 10px 20px rgba(90, 61, 43, 0.1)" }}
+              transition={{ delay: index * 0.15 }} // Increased stagger
+              whileHover={{ scale: 1.03, boxShadow: "0 15px 30px rgba(90, 61, 43, 0.15)" }} // Subtle lift and shadow
             >
               <p className="text-lg italic text-[#583d2b]/80 mb-4">"{testimonial.quote}"</p>
               <p className="font-semibold text-[#583d2b]">- {testimonial.author}</p>
@@ -369,7 +370,7 @@ export default function LandingPage() {
           viewport={{ once: true, amount: 0.5 }}
           variants={textInViewVariants}
         >
-          Ready to Build <span className="text-[#e6a17a]">Something Amazing</span>?
+          Ready to Build <span className="text-[#e6a17a] drop-shadow-md">Something Amazing</span>?
         </motion.h2>
         <motion.p
           className="text-lg sm:text-xl text-[#583d2b]/80 mb-10 max-w-3xl mx-auto"
@@ -382,24 +383,24 @@ export default function LandingPage() {
           Let's discuss your project and turn your vision into a digital reality. Get in touch with our expert team today!
         </motion.p>
         <motion.button
-          className="relative overflow-hidden bg-[#e6a17a] text-white px-10 py-5 rounded-full font-bold text-xl shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#e6a17a] focus:ring-opacity-75 group"
-          whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(230, 161, 122, 0.3)" }}
-          whileTap={{ scale: 0.95 }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={itemVariants}
-          transition={{ delay: 0.4 }}
-        >
-          <span className="relative z-10">Contact Us Now</span>
-          {/* Gradient overlay for hover effect */}
-          <motion.span
-            className="absolute inset-0 bg-gradient-to-r from-[#d98c63] to-[#e6a17a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            initial={{ x: "-100%" }}
-            animate={{ x: "0%" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          ></motion.span>
-        </motion.button>
+            className="relative overflow-hidden bg-[#e6a17a] text-white px-10 py-5 rounded-full font-bold text-xl shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#e6a17a] focus:ring-opacity-75 group"
+            whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(230, 161, 122, 0.3)" }}
+            whileTap={{ scale: 0.95 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={itemVariants}
+            transition={{ delay: 0.4 }}
+          >
+            <span className="relative z-10">Contact Us Now</span>
+            {/* Gradient overlay for hover effect */}
+            <motion.span
+              className="absolute inset-0 bg-gradient-to-r from-[#d98c63] to-[#e6a17a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              initial={{ x: "-100%" }}
+              animate={{ x: "0%" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            ></motion.span>
+          </motion.button>
       </section>
     </div>
   );
