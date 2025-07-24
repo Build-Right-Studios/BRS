@@ -16,6 +16,18 @@ export default function Footer() {
     tap: { scale: 0.95 },
   };
 
+  // Variants for the copyright text animation
+  const copyrightVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut", delay: 0.4 } },
+  };
+
+  // Define textInViewVariants within the Footer component
+  const textInViewVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   return (
     <motion.footer
       className="bg-[#583d2b] text-[#eee3cb] py-12 px-6 md:px-16 border-t border-[#e6a17a]/30"
@@ -30,7 +42,7 @@ export default function Footer() {
         <div className="col-span-1 md:col-span-2 flex flex-col items-center md:items-start">
           <motion.a
             href="#"
-            className="flex items-center space-x-2 mb-4 text-white text-3xl font-extrabold tracking-tight group"
+            className="flex items-center space-x-2 mb-4 text-[#eee3cb] text-3xl font-extrabold tracking-tight group"
             whileHover={{ scale: 1.02, color: "#e6a17a" }}
             whileTap={{ scale: 0.98 }}
           >
@@ -54,7 +66,7 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-start">
           <h3 className="text-xl font-semibold mb-4 text-[#e6a17a]">Quick Links</h3>
           <ul className="space-y-2">
-            {['Home', 'Services', 'Portfolio', 'About', 'Contact'].map((link, index) => (
+            {['Home', 'Services', 'Portfolio', 'About', 'Contact'].map((link) => (
               <motion.li key={link} variants={itemVariants}>
                 <a
                   href={`#${link.toLowerCase()}`}
@@ -73,7 +85,7 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-start">
           <h3 className="text-xl font-semibold mb-4 text-[#e6a17a]">Connect With Us</h3>
           <div className="flex space-x-4">
-            {/* Replace with actual social media icons/links */}
+            {/* Updated Social Media Icons (using inline SVGs for common platforms) */}
             <motion.a
               href="#"
               className="text-[#eee3cb]/80 hover:text-[#e6a17a] transition-colors duration-200"
@@ -82,7 +94,7 @@ export default function Footer() {
               whileHover="hover"
               whileTap="tap"
             >
-              <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.5 0-2 2-2h2V2.14c-.326-.053-1.607-.14-3.045-.14C10.51 2 8 3.56 8 8.05V12H5v4h3v6h4v-6h3l1-4h-4v-2.5z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </motion.a>
             <motion.a
               href="#"
@@ -92,7 +104,7 @@ export default function Footer() {
               whileHover="hover"
               whileTap="tap"
             >
-              <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.34-1.6.56-2.46.66.88-.53 1.56-1.37 1.88-2.37-.83.49-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.37 0-4.3 1.93-4.3 4.3 0 .34.04.67.11 1C7.71 9.32 4.07 7.31 1.6 4.23c-.37.64-.58 1.39-.58 2.19 0 1.49.76 2.81 1.91 3.59-.7-.02-1.35-.21-1.92-.53v.05c0 2.08 1.48 3.81 3.44 4.2-.36.1-.74.15-1.13.15-.28 0-.55-.03-.8-.08.55 1.7 2.14 2.94 4.03 2.97-1.47 1.15-3.33 1.84-5.36 1.84-.35 0-.7-.02-1.04-.06C2.9 20.3 5.3 21 7.82 21c8.1 0 12.55-6.7 12.55-12.55 0-.2-.01-.4-.02-.6.86-.62 1.6-1.39 2.18-2.27z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17-17 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.7 5 4 8 4-1.5-2.6-2-5.5.4-9C14.7 3 16.4 3.7 18 5s2.5 2.5 3 4c.7-1.3 1.4-2.6 1.4-2.6z"/></svg>
             </motion.a>
             <motion.a
               href="#"
@@ -102,16 +114,71 @@ export default function Footer() {
               whileHover="hover"
               whileTap="tap"
             >
-              <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 19H5V8h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 12.27h-3V13.5c0-.73-.02-1.33-.03-1.85-.01-.52-.02-.95-.02-1.27 0-.67.07-1.32.42-1.78.34-.46.82-.7 1.4-.7.98 0 1.71.67 1.71 2.02V19h3v-6.5c0-3.59-2.34-4.88-4.52-4.88-1.57 0-2.39.87-2.78 1.43V8h-.03s-.01.01-.01.01H8v11h3z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/></svg>
+            </motion.a>
+             <motion.a
+              href="#"
+              className="text-[#eee3cb]/80 hover:text-[#e6a17a] transition-colors duration-200"
+              aria-label="Instagram"
+              variants={itemVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.5" y1="6.5" y2="6.5"/></svg>
             </motion.a>
           </div>
         </div>
       </div>
 
+      {/* Call to Action in Footer */}
+      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-[#e6a17a]/30 text-center">
+        <motion.h3
+          className="text-2xl font-bold mb-4 text-[#e6a17a]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={textInViewVariants}
+        >
+          Ready to Start Your Project?
+        </motion.h3>
+        <motion.p
+          className="text-[#eee3cb]/80 mb-6 max-w-2xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={textInViewVariants}
+          transition={{ delay: 0.2 }}
+        >
+          We're excited to help you build something amazing. Reach out to us today!
+        </motion.p>
+        <motion.button
+            className="relative overflow-hidden bg-[#e6a17a] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#e6a17a] focus:ring-opacity-75 group"
+            whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(230, 161, 122, 0.3)" }} // Orange shadow
+            whileTap={{ scale: 0.95 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={itemVariants}
+            transition={{ delay: 0.4 }}
+          >
+            <span className="relative z-10">Get a Free Consultation</span>
+            {/* Gradient overlay for hover effect */}
+            <motion.span
+              className="absolute inset-0 bg-gradient-to-r from-[#d98c63] to-[#e6a17a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              initial={{ x: "-100%" }}
+              animate={{ x: "0%" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            ></motion.span>
+          </motion.button>
+      </div>
+
       {/* Copyright */}
       <motion.div
         className="mt-10 pt-6 border-t border-[#e6a17a]/30 text-sm text-[#eee3cb]/60 text-center"
-        variants={itemVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={copyrightVariants} // Using a specific variant for copyright
       >
         <p>&copy; {new Date().getFullYear()} Build Right Studios. All rights reserved.</p>
       </motion.div>
