@@ -9,9 +9,12 @@ function App() {
 
   return (
     <>
-       <ComingSoon /> 
+      <ComingSoon />
+      <Nav />
+      <LandingPage />
+      <Footer />
       {/* <Nav /> */}
-      {/* <LandingPage /> */}     
+      {/* <LandingPage /> */}
       {/* <Footer /> */}
     </>
   )
