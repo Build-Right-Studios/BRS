@@ -11,8 +11,6 @@ function App() {
     <>
       <ComingSoon />
       <Nav />
-      <LandingPage />
-      <Footer />
       {/* <Nav /> */}
       {/* <LandingPage /> */}
       {/* <Footer /> */}
