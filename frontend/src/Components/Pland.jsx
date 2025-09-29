@@ -1,15 +1,7 @@
-// To make this code run in your VS Code React project, you must first install the necessary dependencies:
-// 1. Framer Motion (for animations): npm install framer-motion
-// 2. Lucide React (for icons): npm install lucide-react
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Users, Clock, ArrowRight } from 'lucide-react';
-
-// === FIXED: Removed the faulty local import and replaced with a placeholder URL ===
-// If you want to use a local image, you must place your image file (e.g., 'product.jpg')
-// in the 'public' folder or ensure you use the correct import path relative to this file.
-// For now, we use a working placeholder.
+import LandingImage from '/src/assets/images/landing img.jpg';
 
 // --- Framer Motion Variants ---
 const containerVariants = {
@@ -38,10 +30,8 @@ const Newlanding = () => {
   const highlightColor = 'text-red-600'; // Orange-Red highlight
   const bgColor = 'bg-[#fef9f5]'; // Very light cream background (#fef9f5)
   
-  // --- RESTORED: Placeholder image URL to ensure compilation ---
-  // If you use a local image, you must import it or place it in the public folder.
-  // Assuming the user corrected the path to a relative local path.
-  const imageUrl = "./src/assets/images/landing img.jpg";
+  // Use the imported image variable
+  const imageUrl = LandingImage;
 
   return (
     // Main wrapper: min-h-screen and centered content
@@ -64,7 +54,7 @@ const Newlanding = () => {
 
           {/* Main Headline */}
           <motion.div variants={itemVariants}>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter text-gray-900">
               Build Right
               <br />
               <motion.span 
@@ -110,7 +100,7 @@ const Newlanding = () => {
 
         {/* === Right Panel: Image === */}
         <motion.div
-          // UPDATED: Increased height from h-96 (24rem) to h-[32rem] (32rem)
+          // UPDATED: Height set to 32rem
           className="h-[32rem] w-full flex items-center justify-center p-4 sm:p-8"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
