@@ -1,0 +1,121 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Zap, Users, Clock, ArrowRight } from 'lucide-react';
+import LandingImage from '/src/assets/images/landing img.jpg';
+
+// --- Framer Motion Variants ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+    },
+  },
+};
+
+const Newlanding = () => {
+  const highlightColor = 'text-red-600'; // Orange-Red highlight
+  const bgColor = 'bg-[#fef9f5]'; // Very light cream background (#fef9f5)
+  
+  // Use the imported image variable
+  const imageUrl = LandingImage;
+
+  return (
+    // Main wrapper: min-h-screen and centered content
+    <div className={`min-h-screen flex items-center justify-center ${bgColor} font-['Inter',_sans-serif] p-4`}>
+      
+      {/* Central Content Container */}
+      <div className="max-w-7xl mx-auto py-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-center">
+        
+        {/* === Left Panel: Hero Content === */}
+        <motion.div
+          className="space-y-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Statistic Badge */}
+          <motion.div variants={itemVariants} className="text-sm font-semibold text-gray-800">
+            <span className="inline-block mr-2 text-red-600">★</span> 250 Startups successfully boosted
+          </motion.div>
+
+          {/* Main Headline */}
+          <motion.div variants={itemVariants}>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter text-gray-900">
+              Build Right
+              <br />
+              <motion.span 
+                className={`${highlightColor}`}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                Everytime
+              </motion.span>
+            </h1>
+          </motion.div>
+
+          {/* Features List */}
+          <motion.div 
+            className="flex flex-wrap gap-x-6 gap-y-4 text-gray-700 font-medium"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div variants={itemVariants} className="flex items-center space-x-2">
+              <Zap className={`w-5 h-5 ${highlightColor}`} />
+              <span>Instant SEO boost</span>
+            </motion.div>
+            <motion.div variants={itemVariants} className="flex items-center space-x-2">
+              <Users className={`w-5 h-5 ${highlightColor}`} />
+              <span>Increase your audience</span>
+            </motion.div>
+            <motion.div variants={itemVariants} className="flex items-center space-x-2">
+              <Clock className={`w-5 h-5 ${highlightColor}`} />
+              <span>Save time</span>
+            </motion.div>
+          </motion.div>
+
+          {/* CTA Button */}
+          <motion.div variants={itemVariants} className="pt-4">
+            <button className="flex items-center space-x-2 bg-gray-900 text-white text-lg font-semibold px-8 py-3 rounded-xl shadow-2xl hover:bg-gray-700 transition duration-300">
+              <span>Get listed on 100+ directories</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </motion.div>
+        </motion.div>
+
+        {/* === Right Panel: Image === */}
+        <motion.div
+          // UPDATED: Height set to 32rem
+          className="h-[32rem] w-full flex items-center justify-center p-4 sm:p-8"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <img 
+            src={imageUrl} 
+            alt="Product Mockup Screenshot" 
+            // EDITED: Removed shadow-2xl class
+            className="w-full h-full object-contain rounded-xl" 
+          />
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default Newlanding;

@@ -23,10 +23,10 @@ export default function App() {
   const navItems = ['Home', 'Services', 'Portfolio', 'About', 'Contact'];
 
   return (
-    <div className="bg-[#eee3cb] min-h-screen font-sans">
+    <div className="bg-[#ffffff] min-h-screen font-sans">
       {/* Navbar */}
       <motion.nav
-        className="w-full fixed top-0 left-0 z-50 bg-[#eee3cb] bg-opacity-90 backdrop-blur-md shadow-md border-b border-[#583d2b]/20"
+        className="w-full fixed top-0 left-0 z-50 bg-[#ffffff] bg-opacity-90 backdrop-blur-md shadow-md border-b border-[#583d2b]/20"
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -44,7 +44,7 @@ export default function App() {
               alt="Build Right Studios Logo"
               className="h-10 rounded-md"
             />
-            <span className="text-[#583d2b] font-extrabold text-xl whitespace-nowrap">
+            <span className="text-[#f36c3b] font-extrabold text-xl whitespace-nowrap">
               Build Right Studios
             </span>
           </motion.div>
@@ -73,7 +73,7 @@ export default function App() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.4 }}
           >
-            <button className="bg-[#e6a17a] text-white px-6 py-2 rounded-full font-semibold shadow-md hover:shadow-xl transition-all">
+            <button className="bg-[#000000] text-white px-6 py-2 rounded-2xl font-semibold shadow-md hover:shadow-xl transition-all">
               Get a Quote
             </button>
           </motion.div>
@@ -124,16 +124,6 @@ export default function App() {
           </motion.div>
         )}
       </motion.nav>
-
-      {/* Main Page Content */}
-      <motion.div
-        className="pt-24 text-center text-[#583d2b]/60"
-        variants={pageTextVariant}
-        initial="hidden"
-        animate="visible"
-      >
-        <p className="text-xl">Welcome to Build Right Studios!</p>
-      </motion.div>
     </div>
   );
 }
