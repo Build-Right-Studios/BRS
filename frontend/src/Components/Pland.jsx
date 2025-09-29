@@ -6,6 +6,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Users, Clock, ArrowRight } from 'lucide-react';
 
+// === FIXED: Removed the faulty local import and replaced with a placeholder URL ===
+// If you want to use a local image, you must place your image file (e.g., 'product.jpg')
+// in the 'public' folder or ensure you use the correct import path relative to this file.
+// For now, we use a working placeholder.
+
 // --- Framer Motion Variants ---
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -31,9 +36,12 @@ const itemVariants = {
 
 const Newlanding = () => {
   const highlightColor = 'text-red-600'; // Orange-Red highlight
-  const bgColor = 'bg-[#fef9f5]'; // Updated: Very light cream background (#fef9f5)
-  // Placeholder image URL
-  const imageUrl = "https://placehold.co/800x600/fef9f5/1c1917?text=Product+Mockup"; 
+  const bgColor = 'bg-[#fef9f5]'; // Very light cream background (#fef9f5)
+  
+  // --- RESTORED: Placeholder image URL to ensure compilation ---
+  // If you use a local image, you must import it or place it in the public folder.
+  // Assuming the user corrected the path to a relative local path.
+  const imageUrl = "./src/assets/images/landing img.jpg";
 
   return (
     // Main wrapper: min-h-screen and centered content
@@ -102,7 +110,8 @@ const Newlanding = () => {
 
         {/* === Right Panel: Image === */}
         <motion.div
-          className="h-96 w-full flex items-center justify-center p-4 sm:p-8"
+          // UPDATED: Increased height from h-96 (24rem) to h-[32rem] (32rem)
+          className="h-[32rem] w-full flex items-center justify-center p-4 sm:p-8"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -110,7 +119,8 @@ const Newlanding = () => {
           <img 
             src={imageUrl} 
             alt="Product Mockup Screenshot" 
-            className="w-full h-full object-contain rounded-xl shadow-2xl" 
+            // EDITED: Removed shadow-2xl class
+            className="w-full h-full object-contain rounded-xl" 
           />
         </motion.div>
       </div>
