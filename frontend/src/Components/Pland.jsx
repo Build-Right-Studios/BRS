@@ -1,13 +1,18 @@
+// To make this code run in your VS Code React project, you must first install the necessary dependencies:
+// 1. Framer Motion (for animations): npm install framer-motion
+// 2. Lucide React (for icons): npm install lucide-react
+
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Users, Clock, ArrowRight } from 'lucide-react';
 
-// Framer Motion Variants for Staggered Animation
+// --- Framer Motion Variants ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1, // Delay between child animations
+      staggerChildren: 0.1,
     },
   },
 };
@@ -24,13 +29,17 @@ const itemVariants = {
   },
 };
 
-
 const Newlanding = () => {
   const highlightColor = 'text-red-600'; // Orange-Red highlight
-  const bgColor = 'bg-stone-50'; // Light beige background
+  const bgColor = 'bg-[#fef9f5]'; // Updated: Very light cream background (#fef9f5)
+  // Placeholder image URL
+  const imageUrl = "https://placehold.co/800x600/fef9f5/1c1917?text=Product+Mockup"; 
 
   return (
+    // Main wrapper: min-h-screen and centered content
     <div className={`min-h-screen flex items-center justify-center ${bgColor} font-['Inter',_sans-serif] p-4`}>
+      
+      {/* Central Content Container */}
       <div className="max-w-7xl mx-auto py-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-center">
         
         {/* === Left Panel: Hero Content === */}
@@ -48,7 +57,7 @@ const Newlanding = () => {
           {/* Main Headline */}
           <motion.div variants={itemVariants}>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter">
-              Build Right 
+              Build Right
               <br />
               <motion.span 
                 className={`${highlightColor}`}
@@ -69,7 +78,6 @@ const Newlanding = () => {
             animate="visible"
           >
             <motion.div variants={itemVariants} className="flex items-center space-x-2">
-              {/* Note: Icons now imported directly from 'lucide-react' */}
               <Zap className={`w-5 h-5 ${highlightColor}`} />
               <span>Instant SEO boost</span>
             </motion.div>
@@ -92,21 +100,18 @@ const Newlanding = () => {
           </motion.div>
         </motion.div>
 
-        {/* === Right Panel: Image Placeholder === */}
-        {/* This new panel is now a large, centered box perfect for an image/screenshot */}
+        {/* === Right Panel: Image === */}
         <motion.div
           className="h-96 w-full flex items-center justify-center p-4 sm:p-8"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          {/* Placeholder box for the product image/screenshot */}
-          <div className="w-full h-full bg-gray-200 rounded-3xl shadow-xl flex items-center justify-center overflow-hidden border border-gray-300">
-            <span className="text-xl text-gray-500 font-semibold p-4 text-center">
-              Your Product Screenshot Here
-            </span>
-            {/* Replace the span above with an actual <img> tag when you have the image source */}
-          </div>
+          <img 
+            src={imageUrl} 
+            alt="Product Mockup Screenshot" 
+            className="w-full h-full object-contain rounded-xl shadow-2xl" 
+          />
         </motion.div>
       </div>
     </div>
