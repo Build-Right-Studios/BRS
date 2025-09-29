@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import LandingImage from '../assets/images/logo.png'; 
 
 // Animation Variants
 const navItemVariants = {
@@ -9,11 +10,6 @@ const navItemVariants = {
     y: 0,
     transition: { delay: i * 0.15, duration: 0.5 },
   }),
-};
-
-const pageTextVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 1.2 } },
 };
 
 export default function App() {
@@ -40,7 +36,8 @@ export default function App() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <img
-              src=".\src\assets\images\logo.png"
+              // === Using the imported image variable ===
+              src={LandingImage}
               alt="Build Right Studios Logo"
               className="h-10 rounded-md"
             />
