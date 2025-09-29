@@ -124,16 +124,6 @@ export default function App() {
           </motion.div>
         )}
       </motion.nav>
-
-      {/* Main Page Content */}
-      <motion.div
-        className="pt-24 text-center text-[#583d2b]/60"
-        variants={pageTextVariant}
-        initial="hidden"
-        animate="visible"
-      >
-        <p className="text-xl">Welcome to Build Right Studios!</p>
-      </motion.div>
     </div>
   );
 }

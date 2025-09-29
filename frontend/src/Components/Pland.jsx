@@ -48,9 +48,7 @@ const Newlanding = () => {
           {/* Main Headline */}
           <motion.div variants={itemVariants}>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter">
-              Submit once and
-              <br />
-              List your startup
+              Build Right 
               <br />
               <motion.span 
                 className={`${highlightColor}`}
@@ -58,7 +56,7 @@ const Newlanding = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                everywhere
+                Everytime
               </motion.span>
             </h1>
           </motion.div>
