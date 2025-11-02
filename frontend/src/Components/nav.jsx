@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import LandingImage from '../assets/images/logo.png'; 
+const LOGO_SRC = '/logo.png'; 
 
 // Animation Variants
 const navItemVariants = {
@@ -20,7 +20,7 @@ export default function App() {
 
   return (
     <div className="bg-[#ffffff] min-h-screen font-sans">
-      {/* Navbar */}
+      {/* 1. Navbar (Fixed) */}
       <motion.nav
         className="w-full fixed top-0 left-0 z-50 bg-[#ffffff] bg-opacity-90 backdrop-blur-md shadow-md border-b border-[#583d2b]/20"
         initial={{ y: -80, opacity: 0 }}
@@ -36,8 +36,7 @@ export default function App() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <img
-              // === Using the imported image variable ===
-              src={LandingImage}
+              src={LOGO_SRC}
               alt="Build Right Studios Logo"
               className="h-10 rounded-md"
             />
@@ -121,6 +120,11 @@ export default function App() {
           </motion.div>
         )}
       </motion.nav>
+
+      <main className="pt-20"> 
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        </div>
+      </main>
     </div>
   );
 }
